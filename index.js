@@ -28,14 +28,24 @@ function generatePunnet(alleleOne, alleleTwo){
         alleleTwo.forEach(y =>punnetSquare.squares.push([x,y]))
     })
 
-    return punnetSquare.squares
+    return punnetSquare
 }
 
-// function printPunnet(square){
-//     let strBuffer = ''
-//     square.forEach(x => {
-//         strBuffer += 
-//     })
-// }
+function printPunnet({left, right, squares}){
+    // Always print uppercase first
+    squares = squares.map(x=>x.sort())
+    
+    let strBuffer = '************************************\n'
+    strBuffer += `          ${right[0]}          ${right[1]}\n`
+    strBuffer += `    -------------------------\n`
+    strBuffer += `  ${left[0]} |     ${squares[0].join('')}    |    ${squares[1].join('')}     |\n`
+    strBuffer += `    |           |           |\n`
+    strBuffer += `    |-----------|-----------|\n`
+    strBuffer += `  ${left[1]} |     ${squares[2].join('')}    |    ${squares[3].join('')}     |\n`
+    strBuffer += `    |           |           |\n`
+    strBuffer += `    -------------------------\n`
+    strBuffer += '************************************\n'
+    console.log(strBuffer)
+}
 
-console.log(generatePunnet(['X','x'],['X','x']))
+printPunnet(generatePunnet(['X','x'],['X','x']))
