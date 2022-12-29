@@ -1,5 +1,11 @@
 const { generateCat, generateLitter } = require('./genes.js')
 const { stringifyCat } = require('./util.js')
+const express = require('express')
+const PORT = process.env.PORT | 3000
+
+const app = express()
+app.use(express.json())
+
 
 const mum = {
     primaryColor: ['B','b'],     // Black (B), chocolate (b), cinnamom (b1)
@@ -21,7 +27,8 @@ const dad = {
     sex: 'M'
 }
 
-let kittens = generateLitter(mum,dad,20)
-console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
-kittens.forEach((x,i) => console.log(`${i+1}. ${stringifyCat(x)}`))
+// let kittens = generateLitter(mum,dad,20)
+// console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
+// kittens.forEach((x,i) => console.log(`${i+1}. ${stringifyCat(x)}`))
 
+app.listen(PORT, ()=>{console.log(`listening on port ${PORT}`)})
