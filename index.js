@@ -1,5 +1,5 @@
 /*
-    Allele
+    Genotype
     [X,X], [X,x], [x,x]
 
     
@@ -12,29 +12,44 @@
     x |  Xx  |   xx
       |--------------
 
+
+    Cat {
+        primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
+        orange: [O,o],           // Orange, not orange
+        dilute: [D,d],           // Dilute, not dilute
+        tabby: [A,a],            // Tabby, not tabby
+        furLength: [L,l],        // Short fur, long fur
+        sex: [M,F]
+    }
+
+    Determining Phenotype
+    1. If male, only take the first of the orange alleles. Only females can be tortie / calico
+    2. If female, if its a heterozygote on orange trait, it will be tortie or calico. 
+        Randomly generate the amount of tortiness
+
 */
 
 
 /*  
-    params: alleleOne [X,x], alleleTwo [X,x]
+    params: PairOne [X,x], PairTwo [X,x]
     returns: punnetSquare {
-                left: alleleOne,
-                right: alleleTwo,
+                left: PairOne,
+                right: PairTwo,
                 squares: [[X,X],[X,x],[X,x],[x,x]]
             }
 */
-function generatePunnet(alleleOne, alleleTwo){
+function generatePunnet(pairOne, pairTwo){
     let punnetSquare = {}
 
     // Save left and right parents
-    punnetSquare.left = alleleOne
-    punnetSquare.right = alleleTwo
+    punnetSquare.left = pairOne
+    punnetSquare.right = pairTwo
 
     // Generate square
     punnetSquare.squares = []
-    alleleOne.forEach(x => {
+    pairOne.forEach(x => {
         // Pair each element with every other element. Sort to keep uppercase first
-        alleleTwo.forEach(y =>punnetSquare.squares.push([x,y].sort()))
+        pairTwo.forEach(y =>punnetSquare.squares.push([x,y].sort()))
     })
 
     return punnetSquare
@@ -42,7 +57,7 @@ function generatePunnet(alleleOne, alleleTwo){
 
 /*
     params: a punnet square, but we only need squares[]
-    returns: an allele [X,x]
+    returns: a pair [X,x]
 */
 function pickSample({squares}){
     // Generate random number 0-3
