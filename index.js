@@ -29,9 +29,59 @@
 
 */
 
+const mum = {
+    primaryColor: ['B','b'],     // Black (B), chocolate (b), cinnamom (b1)
+    orange: ['O','o'],           // Orange (O), not orange (o)
+    dilute: ['D','d'],           // Dilute (D), not dilute (d)
+    tabby: ['A','a'],            // Tabby (A), not tabby (a)
+    furLength: ['L','l'],        // Short fur (L), long fur (l)
+    sex: 'F'
+}
+
+const dad = {
+    primaryColor: ['B','b'],     // Black (B), chocolate (b), cinnamom (b1)
+    orange: ['O','o'],           // Orange (O), not orange (o)
+    dilute: ['D','d'],           // Dilute (D), not dilute (d)
+    tabby: ['A','a'],            // Tabby (A), not tabby (a)
+    furLength: ['L','l'],        // Short fur (L), long fur (l)
+    sex: 'M'
+}
+
+/*
+    params: mum and dad cat objects
+    returns: one cat
+*/
+function generateCat(mum, dad){
+    let child = {}
+    
+    // pick sex of child
+    let rand = Math.floor(Math.random()*2)
+    child.sex = rand == 0 ?'M':'F'
+
+    child.primaryColor = pickSample(generatePunnet(mum.primaryColor, dad.primaryColor))
+    child.orange = pickSample(generatePunnet(mum.orange, dad.orange))
+    child.dilute = pickSample(generatePunnet(mum.dilute, dad.dilute))
+    child.tabby = pickSample(generatePunnet(mum.tabby, dad.tabby))
+    child.furLength = pickSample(generatePunnet(mum.furLength, dad.furLength))
+
+    return child
+}
+
+
+function generateLitter(mum, dad, num){
+    if(!num){
+        // if no number is passed in, generate random number 2-10
+        num = 2 + Math.floor(Math.random()*8)
+    }
+    let litter = []
+    for(let i=0; i<num; i++){
+        litter.push(generateCat(mum,dad))
+    }
+    return litter
+}
 
 /*  
-    params: PairOne [X,x], PairTwo [X,x]
+    params: pairOne [X,x], pairTwo [X,x]
     returns: punnetSquare {
                 left: PairOne,
                 right: PairTwo,
@@ -60,8 +110,8 @@ function generatePunnet(pairOne, pairTwo){
     returns: a pair [X,x]
 */
 function pickSample({squares}){
-    // Generate random number 0-3
-    let randomNum = Math.floor(Math.random()*4)
+    // Generate random number
+    let randomNum = Math.floor(Math.random()*squares.length)
 
     return squares[randomNum]
 }
@@ -105,11 +155,12 @@ function printPunnet({left, right, squares}){
 
 
 
-console.log('Generating punnet square...')
-let punnet = generatePunnet(['A','a'],['A','a'])
-printPunnet(punnet)
+// console.log('Generating punnet square...')
+// let punnet = generatePunnet(['L','l'],['L','l'])
+// printPunnet(punnet)
+// // console.log(punnet)
 
-console.log('Picking samples...')
-for(let i=0; i<15; i++){
-    console.log(pickSample(punnet))
-}
+// console.log('Picking samples...')
+// for(let i=0; i<15; i++){
+//     console.log(pickSample(punnet))
+// }
