@@ -4,7 +4,7 @@ function isEqual(a, b){
 }
 
 function stringifyCat({name, sex, phenotype}){
-    return `${name} is a ${phenotype.shortFur?'short-haired':'long-haired'} ${phenotype.color}${phenotype.dilute?' dilute':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}`
+    return `${name} is a ${phenotype.shortFur?'short-haired':'long-haired'} ${phenotype.dilute?'dilute ':''}${phenotype.color}${phenotype.tuxedo?' tuxedo':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}!`
 }
 
 /*

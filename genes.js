@@ -47,9 +47,17 @@ const { printPunnet, isEqual } = require('./util.js')
 function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
     let phenotype = {}
 
+    // Tabby
+    phenotype.tabby = isEqual(tabby,['a','a']) ? false : true // this will be overwritten if cat is orange
+
+
     // Color
     // [O, O] or [O] => all orange
-    if(!orange.includes('o')){phenotype.color = 'orange'}
+    if(!orange.includes('o')){
+        phenotype.color = 'orange'
+        // If its all orange, must be a tabby
+        phenotype.tabby = true
+    }
     
     // [o,o] or [o] => just primary color
     else if(!orange.includes('O')){
@@ -73,9 +81,11 @@ function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLengt
     // White / Tuxedo / Black
     if(isEqual(white,['w','w'])){
         phenotype.white = 2
+        phenotype.color = 'white'
     }
     else if (isEqual(white,['W','w'])){
         phenotype.white = 1
+        phenotype.tuxedo = true
     }
     else {
         phenotype.white = 0
@@ -83,9 +93,6 @@ function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLengt
 
     // Dilute
     phenotype.dilute = isEqual(dilute,['d','d']) ? true : false
-
-    // Tabby
-    phenotype.tabby = isEqual(tabby,['a','a']) ? false : true // this will be overwritten if cat is orange
 
     // Fur length
     phenotype.shortFur = isEqual(furLength,['l','l']) ? false : true
