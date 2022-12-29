@@ -54,37 +54,68 @@ const dad = {
     orange: ['O','o'],           // Orange (O), not orange (o)
     dilute: ['D','d'],           // Dilute (D), not dilute (d)
     tabby: ['A','a'],            // Tabby (A), not tabby (a)
-    white: ['W','w'],            // Not white (W), tuxedo (Ww), white (w)
+    white: ['W','w'],            // Not white (WW), tuxedo (Ww), white (ww)
     furLength: ['L','l'],        // Short fur (L), long fur (l)
     sex: 'M'
 }
+
+let kitten = generateCat(mum,dad)
+console.log(kitten)
+
+
+// helper function to check array equality
+function isEqual(a, b){
+    return JSON.stringify(a) === JSON.stringify(b);
+}
+
 
 function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
     let phenotype = {}
 
     // Color
-
-    // Tortie -- only generate for females
-    if(sex == 'F'){
-        if(orange[0] != orange[1]){
-            // If the orange alleles are different, a cat will be a tortie/calico on a scale of 0-3
-            phenotype.tortie = Math.floor(Math.random()*4)
+    // [O, O] or [O] => all orange
+    if(!orange.includes('o')){phenotype.color = 'orange'}
+    
+    // [o,o] or [o] => just primary color
+    else if(!orange.includes('O')){
+        if(primaryColor.includes('B')){phenotype.color = 'black'}
+        else if(primaryColor.includes('b')){phenotype.color = 'chocolate'}
+        else{phenotype.color = 'cinnamon'}
+    }
+    // [O,o] => F tortie
+    else{
+        if(sex == 'F'){
+            if(orange[0] != orange[1]){
+                // tortie/calico on a scale of 0-3
+                phenotype.tortie = Math.floor(Math.random()*4)
+            }
         }
+        if(primaryColor.includes('B')){phenotype.color = 'orange black'}
+        else if(primaryColor.includes('b')){phenotype.color = 'orange chocolate'}
+        else{phenotype.color = 'orange cinnamon'}
     }
 
     // White / Tuxedo / Black
-    if(white == ['w','w']){phenotype.white = 2}
-    else if (white == ['W','w']){phenotype.white = 1}
-    else {phenotype.white = 0}
+    if(isEqual(white,['w','w'])){
+        phenotype.white = 2
+    }
+    else if (isEqual(white,['W','w'])){
+        phenotype.white = 1
+    }
+    else {
+        phenotype.white = 0
+    }
 
     // Dilute
-    phenotype.dilute = dilute==['d','d'] ? true : false
+    phenotype.dilute = isEqual(dilute,['d','d']) ? true : false
 
     // Tabby
-    phenotype.tabby = tabby==['a','a'] ? false : true // this will be overwritten if cat is orange
+    phenotype.tabby = isEqual(tabby,['a','a']) ? false : true // this will be overwritten if cat is orange
 
     // Fur length
-    phenotype.shortFur = furLength==['l','l'] ? false : true
+    phenotype.shortFur = isEqual(furLength,['l','l']) ? false : true
+
+    return phenotype
 }
 
 /*
@@ -102,7 +133,15 @@ function generateCat(mum, dad){
     child.orange = pickSample(generatePunnet(mum.orange, dad.orange))
     child.dilute = pickSample(generatePunnet(mum.dilute, dad.dilute))
     child.tabby = pickSample(generatePunnet(mum.tabby, dad.tabby))
+    child.white = pickSample(generatePunnet(mum.white, dad.white))
     child.furLength = pickSample(generatePunnet(mum.furLength, dad.furLength))
+
+    // Male only carries one allele for orange
+    if(child.sex == 'M'){
+        child.orange = [child.orange[0]]
+    }
+
+    child.phenotype = generatePhenotype(child)
 
     return child
 }
