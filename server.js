@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
     }  
 })
 
+// Generate a single cat
 app.post('/cat',(req,res) => {
     console.log("server.js: generating cat")
     console.log(req.body)
@@ -33,6 +34,7 @@ app.post('/cat',(req,res) => {
     }
 })
 
+// Generate a litter of kittens
 app.post('/litter',(req,res) => {
     console.log("server.js: generating litter")
     try{
