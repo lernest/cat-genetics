@@ -18,14 +18,24 @@
         orange: [O,o],           // Orange, not orange
         dilute: [D,d],           // Dilute, not dilute
         tabby: [A,a],            // Tabby, not tabby
+        white: [W,w],            // Not white, white
         furLength: [L,l],        // Short fur, long fur
-        sex: [M,F]
+        sex: [M,F],
+        phenotype:{
+            color: enum[] or string
+            dilute: bool
+            tabby: bool
+            tortie: range(0,3)
+            white: [none, tuxedo, white]
+            shortFur: bool
+        }
     }
 
     Determining Phenotype
     1. If male, only take the first of the orange alleles. Only females can be tortie / calico
     2. If female, if its a heterozygote on orange trait, it will be tortie or calico. 
         Randomly generate the amount of tortiness
+    3. Orange cats will present as tabby even if they don't carry the gene
 
 */
 
@@ -34,6 +44,7 @@ const mum = {
     orange: ['O','o'],           // Orange (O), not orange (o)
     dilute: ['D','d'],           // Dilute (D), not dilute (d)
     tabby: ['A','a'],            // Tabby (A), not tabby (a)
+    white: ['W','w'],            // Not white (W), tuxedo (Ww), white (w)
     furLength: ['L','l'],        // Short fur (L), long fur (l)
     sex: 'F'
 }
@@ -43,8 +54,37 @@ const dad = {
     orange: ['O','o'],           // Orange (O), not orange (o)
     dilute: ['D','d'],           // Dilute (D), not dilute (d)
     tabby: ['A','a'],            // Tabby (A), not tabby (a)
+    white: ['W','w'],            // Not white (W), tuxedo (Ww), white (w)
     furLength: ['L','l'],        // Short fur (L), long fur (l)
     sex: 'M'
+}
+
+function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
+    let phenotype = {}
+
+    // Color
+
+    // Tortie -- only generate for females
+    if(sex == 'F'){
+        if(orange[0] != orange[1]){
+            // If the orange alleles are different, a cat will be a tortie/calico on a scale of 0-3
+            phenotype.tortie = Math.floor(Math.random()*4)
+        }
+    }
+
+    // White / Tuxedo / Black
+    if(white == ['w','w']){phenotype.white = 2}
+    else if (white == ['W','w']){phenotype.white = 1}
+    else {phenotype.white = 0}
+
+    // Dilute
+    phenotype.dilute = dilute==['d','d'] ? true : false
+
+    // Tabby
+    phenotype.tabby = tabby==['a','a'] ? false : true // this will be overwritten if cat is orange
+
+    // Fur length
+    phenotype.shortFur = furLength==['l','l'] ? false : true
 }
 
 /*
