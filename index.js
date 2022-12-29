@@ -72,7 +72,6 @@ function isEqual(a, b){
     return JSON.stringify(a) === JSON.stringify(b);
 }
 
-
 function stringifyCat({name, sex, phenotype}){
     // Olive is a shorthaired orange and black dilute tabby girl.
     return `${name} is a ${phenotype.shortFur?'short haired':'long haired'} ${phenotype.color}${phenotype.dilute?' dilute':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}`
@@ -222,35 +221,3 @@ function printPunnet({left, right, squares}){
     strBuffer += '************************************\n'
     console.log(strBuffer)
 }
-
-// function printUnlimited({left, right, squares}){
-//     // print top row
-//     let strBuffer = '    '
-//     right.forEach(x => {
-//         strBuffer += `      ${x}      `
-//     })
-//     strBuffer += '\n    '
-
-//     // print line
-//     right.forEach(x => strBuffer += '-------------')
-//     strBuffer += '\n    '
-
-//     // left.forEach(x => {
-//     //     strBuffer += `${x} |`
-//     //     right.forEach
-//     // })
-//     console.log(strBuffer)
-    
-// }
-
-
-
-// console.log('Generating punnet square...')
-// let punnet = generatePunnet(['L','l'],['L','l'])
-// printPunnet(punnet)
-// // console.log(punnet)
-
-// console.log('Picking samples...')
-// for(let i=0; i<15; i++){
-//     console.log(pickSample(punnet))
-// }
