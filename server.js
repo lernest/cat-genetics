@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 
 app.post('/cat',(req,res) => {
     console.log("server.js: generating cat")
+    console.log(req.body)
     try{
         const {mum, dad} = req.body
         let kitten = generateCat(mum, dad)
@@ -35,6 +36,7 @@ app.post('/cat',(req,res) => {
 app.post('/litter',(req,res) => {
     console.log("server.js: generating litter")
     try{
+        // if num is null, a random number (2-9) of kittens will be generated
         const {num, mum, dad} = req.body
         let kittens = generateLitter(mum, dad, num)
         res.send(kittens)
@@ -44,11 +46,6 @@ app.post('/litter',(req,res) => {
         res.status(400).send('Error generating cat')
     }
 })
-
-
-
-
-
 
 
 app.listen(PORT, ()=>{console.log(`listening on port ${PORT}`)})
