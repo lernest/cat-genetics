@@ -14,6 +14,7 @@
 
 
     Cat {
+        name: String,
         primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
         orange: [O,o],           // Orange, not orange
         dilute: [D,d],           // Dilute, not dilute
@@ -39,6 +40,8 @@
 
 */
 
+const names = require('./names.js')
+
 const mum = {
     primaryColor: ['B','b'],     // Black (B), chocolate (b), cinnamom (b1)
     orange: ['O','o'],           // Orange (O), not orange (o)
@@ -61,6 +64,7 @@ const dad = {
 
 let kitten = generateCat(mum,dad)
 console.log(kitten)
+console.log(stringifyCat(kitten))
 
 
 // helper function to check array equality
@@ -68,6 +72,11 @@ function isEqual(a, b){
     return JSON.stringify(a) === JSON.stringify(b);
 }
 
+
+function stringifyCat({name, sex, phenotype}){
+    // Olive is a shorthaired orange and black dilute tabby girl.
+    return `${name} is a ${phenotype.shortFur?'short haired':'long haired'} ${phenotype.color}${phenotype.dilute?' dilute':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}`
+}
 
 function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
     let phenotype = {}
@@ -124,6 +133,8 @@ function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLengt
 */
 function generateCat(mum, dad){
     let child = {}
+
+    child.name = names[Math.floor(Math.random()*names.length)]
     
     // pick sex of child
     let rand = Math.floor(Math.random()*2)
