@@ -29,7 +29,7 @@ const activities = [
     'lying about dinner time',
     'saving a few bites of breakfast for later',
     'watching birds on TV',
-    'walking across your computer keyboard',
+    'walking across a computer keyboard',
     'getting attention',
     'getting ear scratches',
     'getting belly rubs',
@@ -39,7 +39,8 @@ const activities = [
     'waking up at the crack of dawn',
     'playing with other cats',
     'listening to music',
-    'getting into trouble'
+    'getting into trouble',
+    'goosing'
 ]
 
 module.exports = {activities,preActivity}
