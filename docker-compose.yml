@@ -7,9 +7,11 @@ services:
       - 8080:8080
     volumes:
       - ./ui:/app/
+      - /app/node_modules
   api:
     build: ./server
     ports:
       - 3000:3000
     volumes:
       - ./server:/app/
+      - /server/node_modules

@@ -1,8 +1,5 @@
 FROM node:16.3.0-alpine
 
-# install simple http server for serving static content
-# RUN npm install -g http-server
-
 # make the 'app' folder the current working directory
 WORKDIR /app
 
@@ -13,14 +10,7 @@ COPY package*.json ./
 COPY . .
 
 # install project dependencies
-# debugging why this step is failing
 RUN npm install
-
-RUN npm install -g @vue/cli-service 
-RUN npm install -g @vue/cli-plugin-babel
-
-# build app for production with minification
-# RUN npm run build
 
 EXPOSE 8080
 CMD [ "npm", "run", "serve" ]
