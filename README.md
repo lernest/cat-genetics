@@ -50,8 +50,12 @@ A few notes on cat genetics that were taken into account for this abstraction:
 
 ------
 
-## Run project using docker compose (recommended)
+## Run project using docker compose
+There is currently a bug which requires `npm i` to be run in the ui directory before docker-compose will work.
 ```
+cd ui
+npm i
+cd ..
 docker-compose up
 ```
 The UI will be available at localhost/8080.  The API listens on port 3000.
@@ -78,6 +82,7 @@ npm run serve
 ### Start backend
 
 ```
+cd server
 docker build -t genes-server .
 docker run -it -p 3000:3000 --rm --name genes-server --mount type=bind,source="$(pwd)",target=/app genes-server
 ```
