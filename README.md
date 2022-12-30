@@ -59,14 +59,14 @@ The UI will be available at localhost/8080.  The API listens on port 3000.
 
 ## Run project locally
 
-#### Start backend
+### Start backend
 
 ```
 cd server
 nodemon server.js
 ```
 
-#### Start frontend
+### Start frontend
 
 ```
 cd ui
@@ -75,16 +75,26 @@ npm run serve
 
 ## Run project in containers, started separately
 
-#### Start backend
+### Start backend
 
 ```
 docker build -t genes-server .
 docker run -it -p 3000:3000 --rm --name genes-server --mount type=bind,source="$(pwd)",target=/app genes-server
 ```
-#### Start frontend
+### Start frontend
 
 ```
 cd ui
 docker build -t genes-ui .
 docker run -it -p 8080:8080 --rm --name genes-ui --mount type=bind,source="$(pwd)",target=/app genes-ui
 ```
+
+----
+
+## File structure
+
+### server/
+Most of the logic is within `genes.js`. This is where we generate cats by creating punnet squares and picking samples. The API endpoints are defined using Express.js in `server.js`. A few utility functions are defined in `util.js` to keep the logic more concise in the main functions. `names.js` and `activities.js` each contain a single array of strings which are used to randomly assign names and favorite acitivities to the kittens. `index.js` is used for development and testing purposes.
+
+### ui/
+The entirity of the frontend is currently in `App.vue`, although this will be separated into components as the app grows.
