@@ -140,12 +140,12 @@
       <p>{{ kitten.bio }}</p>
       <h4>Genotype</h4>
       <ul>
-        <li>Primary color: {{ kitten.genotype.primaryColor }}</li>
-        <li>Orange: {{ kitten.genotype.orange }}</li>
-        <li>Dilute: {{ kitten.genotype.dilute }}</li>
-        <li>Tabby: {{ kitten.genotype.tabby }}</li>
-        <li>White: {{ kitten.genotype.white }}</li>
-        <li>Fur length: {{ kitten.genotype.furLength }}</li>
+        <li>Primary color: [ {{ kitten.genotype.primaryColor.join(' , ') }} ]</li>
+        <li>Orange: [ {{ kitten.genotype.orange.join(' , ') }} ]</li>
+        <li>Dilute: [ {{ kitten.genotype.dilute.join(' , ') }} ]</li>
+        <li>Tabby: [ {{ kitten.genotype.tabby.join(' , ') }} ]</li>
+        <li>White: [ {{ kitten.genotype.white.join(' , ') }} ]</li>
+        <li>Fur length: [ {{ kitten.genotype.furLength.join(' , ') }} ]</li>
       </ul>
     </div>
   </div>
