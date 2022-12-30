@@ -51,9 +51,11 @@ A few notes on cat genetics that were taken into account for this abstraction:
 ------
 
 ## Run project using docker compose
-There is currently a bug which requires `npm i` to be run in the ui directory before docker-compose will work.
+There is currently a bug which requires `npm i` to be run in each directory before docker-compose will work.
 ```
 cd ui
+npm i
+cd ../server
 npm i
 cd ..
 docker-compose up
