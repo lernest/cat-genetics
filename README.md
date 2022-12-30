@@ -27,6 +27,25 @@ A cat can be represted as follows:
 
 ```
 
+When two cats are breeded, a punnet square can be generated for each trait.
+```
+   Punnet Square
+
+         X      x
+      |--------------
+    X |  XX  |   Xx
+      |--------------
+    x |  Xx  |   xx
+      |--------------
+```
+
+This punnet square shows that the offspring can have any of the following genotypes for the given trait, each with a probability of 0.25.
+```
+['XX','Xx','Xx','xx']
+```
+
+
+
 ## Run project using docker compose
 ```
 docker-compose up
