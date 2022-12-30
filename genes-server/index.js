@@ -1,7 +1,7 @@
 // this file is only used for manual testing
 
 const { generateCat, generateLitter } = require('./genes.js')
-const { stringifyCat, writeBio } = require('./util.js')
+// const { stringifyCat, writeBio } = require('./util.js')
 
 
 const mum = {
