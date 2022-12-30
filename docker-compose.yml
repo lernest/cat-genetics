@@ -1,13 +1,6 @@
 ---
 version: "3.8"
 services:
-  ui:
-    build: ./ui
-    ports:
-      - 8080:8080
-    volumes:
-      - ./ui:/app/
-      - /app/node_modules
   api:
     build: ./server
     ports:
@@ -15,3 +8,11 @@ services:
     volumes:
       - ./server:/app/
       - /server/node_modules
+  ui:
+    build: ./ui
+    ports:
+      - 8080:8080
+    volumes:
+      - ./ui:/app/
+      - /app/node_modules
+
