@@ -27,7 +27,7 @@ A cat can be represted as follows:
 
 ```
 
-When a kitten is created, a punnet square can be generated for each trait.
+When a new kitten is created, a punnet square can be generated for each trait from their parents.
 ```
    Punnet Square
 
@@ -43,8 +43,7 @@ This punnet square shows that the offspring can have any of the following genoty
 ```
 ['XX','Xx','Xx','xx']
 ```
-
-The phenotype is determined by the combination of these genes.
+One of these will be randomly picked when the kitten is born.
 
 A few notes on cat genetics that were taken into account for this abstraction:
 ```
@@ -53,6 +52,7 @@ A few notes on cat genetics that were taken into account for this abstraction:
     3. Orange cats will present as tabby even if they don't carry the tabby gene.
 ```
 
+------
 
 ## Run project using docker compose
 ```
