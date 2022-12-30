@@ -1,4 +1,4 @@
-FROM node:16.3.0-alpine
+FROM node:18-alpine
 
 # install simple http server for serving static content
 RUN npm install -g nodemon
@@ -8,7 +8,6 @@ WORKDIR /app
 
 # copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
-
 
 # install project dependencies
 RUN npm install
