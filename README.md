@@ -67,13 +67,8 @@ nvm use v16
 ```
 
 ## Run project using docker compose
-There is currently a bug which requires `npm i` to be run in each directory before docker-compose will work.
+
 ```
-cd ui
-npm i
-cd ../server
-npm i
-cd ..
 docker-compose up
 ```
 The UI will be available at localhost/8080.  The API listens on port 3000.
