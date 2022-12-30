@@ -60,12 +60,6 @@ The entirity of the frontend is currently in `App.vue`, although this will be se
 
 -----
 
-If running locally, make sure you're using node v16.
-```
-nvm install v16
-nvm use v16
-```
-
 ## Run project using docker compose
 
 ```
@@ -87,6 +81,8 @@ nodemon server.js
 
 ```
 cd ui
+nvm install v16
+nvm use v16
 npm run serve
 ```
 
