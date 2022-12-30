@@ -49,6 +49,17 @@ A few notes on cat genetics that were taken into account for this abstraction:
 3. Orange cats will present as tabby even if they don't carry the tabby gene.
 
 ------
+
+## File structure
+
+### server/
+Most of the logic is within `genes.js`. This is where we generate cats by creating punnet squares and picking samples. The API endpoints are defined using Express.js in `server.js`. A few utility functions are defined in `util.js` to keep the logic more concise in the main functions. `names.js` and `activities.js` each contain a single array of strings which are used to randomly assign names and favorite acitivities to the kittens. `index.js` is used for development and testing purposes.
+
+### ui/
+The entirity of the frontend is currently in `App.vue`, although this will be separated into components as the app grows.
+
+-----
+
 If running locally, make sure you're using node v16.
 ```
 nvm install v16
@@ -103,15 +114,6 @@ docker run -it -p 8080:8080 --rm --name genes-ui --mount type=bind,source="$(pwd
 
 ----
 
-## File structure
-
-### server/
-Most of the logic is within `genes.js`. This is where we generate cats by creating punnet squares and picking samples. The API endpoints are defined using Express.js in `server.js`. A few utility functions are defined in `util.js` to keep the logic more concise in the main functions. `names.js` and `activities.js` each contain a single array of strings which are used to randomly assign names and favorite acitivities to the kittens. `index.js` is used for development and testing purposes.
-
-### ui/
-The entirity of the frontend is currently in `App.vue`, although this will be separated into components as the app grows.
-
------
 ## Useful docker help
 
 Remove containers
