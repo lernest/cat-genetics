@@ -41,7 +41,7 @@
 */
 
 const names = require('./names.js')
-const { printPunnet, isEqual } = require('./util.js')
+const { printPunnet, isEqual, stringifyCat } = require('./util.js')
 
 
 function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
@@ -126,6 +126,8 @@ function generateCat(mum, dad){
     }
 
     child.phenotype = generatePhenotype(child)
+
+    child.bio = stringifyCat(child)
 
     return child
 }

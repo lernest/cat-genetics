@@ -2,7 +2,7 @@ const { activities, preActivity } = require('./activities')
 
 // helper function to check array equality
 function isEqual(a, b){
-    return JSON.stringify(a) === JSON.stringify(b);
+    return a.join('') === b.join('');
 }
 
 function stringifyCat({name, sex, phenotype}){

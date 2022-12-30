@@ -25,6 +25,6 @@ const dad = {
 }
 
 let kittens = generateLitter(mum,dad,20)
-// console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
-kittens.forEach((x,i) => console.log(`${i+1}. ${stringifyCat(x)}`))
+console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
+kittens.forEach((x,i) => console.log(`${i+1}. ${x.bio}`))
 
