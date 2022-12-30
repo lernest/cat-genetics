@@ -6,7 +6,7 @@ A cat can be represted as follows:
         name: string,
         sex: [M,F],
         genotype:{
-            primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
+            primaryColor: [B,b,b1],  // Black, chocolate, cinnamon
             orange: [O,o],           // Orange, not orange
             dilute: [D,d],           // Dilute, not dilute
             tabby: [A,a],            // Tabby, not tabby
@@ -23,8 +23,6 @@ A cat can be represted as follows:
         },
         bio: string
     }
-
-
 ```
 
 When a new kitten is created, a punnet square can be generated for each trait from their parents.
@@ -39,18 +37,16 @@ When a new kitten is created, a punnet square can be generated for each trait fr
       |--------------
 ```
 
-This punnet square shows that the offspring can have any of the following genotypes for the given trait, each with a probability of 0.25.
+This punnet square shows that the offspring can have any of the following genotypes for the given trait, each with a probability of 0.25:
 ```
 ['XX','Xx','Xx','xx']
 ```
 One of these will be randomly picked when the kitten is born.
 
 A few notes on cat genetics that were taken into account for this abstraction:
-```
-    1. Males only have one allele for the 'orange' trait.
-    2. Only females can be tortie / calico. This occurs when their orange gene is heterozygous [O,o]
-    3. Orange cats will present as tabby even if they don't carry the tabby gene.
-```
+1. Males only have one allele for the 'orange' trait.
+2. Only females can be tortie / calico. This occurs when their orange gene is heterozygous.
+3. Orange cats will present as tabby even if they don't carry the tabby gene.
 
 ------
 

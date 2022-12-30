@@ -172,7 +172,7 @@ export default {
         name: '',
         sex: 'F',
         genotype:{
-          primaryColor: '',     // Black (B), chocolate (b), cinnamom (b1)
+          primaryColor: '',     // Black (B), chocolate (b), cinnamon (b1)
           orange: '',           // Orange (O), not orange (o)
           dilute: '',           // Dilute (D), not dilute (d)
           tabby: '',            // Tabby (A), not tabby (a)
@@ -184,7 +184,7 @@ export default {
         name: '',
         sex: 'M',
         genotype:{
-          primaryColor: '',     // Black (B), chocolate (b), cinnamom (b1)
+          primaryColor: '',     // Black (B), chocolate (b), cinnamon (b1)
           orange: '',           // Orange (O), not orange (o)
           dilute: '',           // Dilute (D), not dilute (d)
           tabby: '',            // Tabby (A), not tabby (a)
