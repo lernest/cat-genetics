@@ -135,10 +135,11 @@
       <button @click="generateCat">Generate Kitten</button>
     </div>
     <div class="kitten" v-if="kitten.name">
-      <h3>Kitten</h3>
+      <!-- <h3>Kitten</h3> -->
+      <h3>{{ kitten.name }}</h3>
+      <p>{{ kitten.bio }}</p>
+      <h4>Genotype</h4>
       <ul>
-        <li>Name: {{ kitten.name }}</li>
-        <li>Sex: {{ kitten.sex }}</li>
         <li>Primary color: {{ kitten.genotype.primaryColor }}</li>
         <li>Orange: {{ kitten.genotype.orange }}</li>
         <li>Dilute: {{ kitten.genotype.dilute }}</li>
@@ -273,6 +274,10 @@ html{
   margin: 0;
   padding: 0;
 }
+p{
+  margin: 5px;
+  padding: 0;
+}
 ul{
   list-style-type: none;
   margin: 0;
@@ -287,17 +292,23 @@ select{
 button{
   padding: 10px;
   border-radius: 5px;
-  background-color: rgb(253, 202, 255)
+  background-color: rgb(253, 202, 255);
+}
+button:hover{
+  cursor: pointer;
 }
 form{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-h1,h2,h3,h4{
+h1,h2,h3{
   text-align: center;
   margin: 0;
   padding: 0
+}
+h4{
+  margin: 10px 0px 5px 0px;
 }
 .parents{
   display: flex;
@@ -320,6 +331,8 @@ h1,h2,h3,h4{
 }
 .kitten{
   border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
 }
 .buttons{
   display: flex;
