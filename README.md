@@ -54,35 +54,38 @@ A few notes on cat genetics that were taken into account for this abstraction:
 
 ------
 
-## Run project using docker compose
+## Run project using docker compose (recommended)
 ```
 docker-compose up
 ```
 The UI will be available at localhost/8080.  The API listens on port 3000.
 
 
-## Run backend locally
+## Run project locally
+
+#### Server
 
 ```
 cd server
 nodemon server.js
 ```
 
-## Run backend container
+#### Run frontend locally
+
+```
+cd ui
+npm run serve
+```
+
+## Run project containers, started separately
+
+#### Backend
 
 ```
 docker build -t genes-server .
 docker run -it -p 3000:3000 --rm --name genes-server --mount type=bind,source="$(pwd)",target=/app genes-server
 ```
-
-
-## Run frontend locally
-
-```
-npm run serve
-```
-
-## Run frontend container
+#### Frontend
 
 ```
 cd ui
