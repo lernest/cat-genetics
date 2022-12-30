@@ -1,10 +1,35 @@
 # Cat Genetics
 
+A cat can be represted as follows:
+```
+    Cat {
+        name: string,
+        sex: [M,F],
+        genotype:{
+            primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
+            orange: [O,o],           // Orange, not orange
+            dilute: [D,d],           // Dilute, not dilute
+            tabby: [A,a],            // Tabby, not tabby
+            white: [W,w],            // Not white, white
+            furLength: [L,l],        // Short fur, long fur
+        }
+        phenotype:{
+            color: string,
+            dilute: bool,
+            tabby: bool,
+            tortie: range(0,3),
+            white: [none, tuxedo, white],
+            shortFur: bool,
+        },
+        bio: string
+    }
+
+
+```
 
 ## Run project using docker compose
 ```
 docker-compose up
-
 ```
 The UI will be available at localhost/8080.  The API listens on port 3000.
 

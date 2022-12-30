@@ -14,22 +14,25 @@
 
 
     Cat {
-        name: String,
-        primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
-        orange: [O,o],           // Orange, not orange
-        dilute: [D,d],           // Dilute, not dilute
-        tabby: [A,a],            // Tabby, not tabby
-        white: [W,w],            // Not white, white
-        furLength: [L,l],        // Short fur, long fur
+        name: string,
         sex: [M,F],
-        phenotype:{
-            color: enum[] or string
-            dilute: bool
-            tabby: bool
-            tortie: range(0,3)
-            white: [none, tuxedo, white]
-            shortFur: bool
+        genotype:{
+            primaryColor: [B,b,b1],  // Black, chocolate, cinnamom
+            orange: [O,o],           // Orange, not orange
+            dilute: [D,d],           // Dilute, not dilute
+            tabby: [A,a],            // Tabby, not tabby
+            white: [W,w],            // Not white, white
+            furLength: [L,l],        // Short fur, long fur
         }
+        phenotype:{
+            color: string,
+            dilute: bool,
+            tabby: bool,
+            tortie: range(0,3),
+            white: [none, tuxedo, white],
+            shortFur: bool,
+        },
+        bio: string
     }
 
     Determining Phenotype
@@ -43,8 +46,40 @@
 const names = require('./names.js')
 const { printPunnet, isEqual, stringifyCat } = require('./util.js')
 
+/*
+    params: mum and dad cat objects
+    returns: one cat
+*/
+function generateCat(mum, dad){
+    let child = {genotype:{}}
 
-function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLength, sex}){
+    child.name = names[Math.floor(Math.random()*names.length)]
+    
+    // pick sex of child
+    let rand = Math.floor(Math.random()*2)
+    child.sex = rand == 0 ?'M':'F'
+
+    child.genotype.primaryColor = pickSample(generatePunnet(mum.genotype.primaryColor, dad.genotype.primaryColor))
+    child.genotype.orange = pickSample(generatePunnet(mum.genotype.orange, dad.genotype.orange))
+    child.genotype.dilute = pickSample(generatePunnet(mum.genotype.dilute, dad.genotype.dilute))
+    child.genotype.tabby = pickSample(generatePunnet(mum.genotype.tabby, dad.genotype.tabby))
+    child.genotype.white = pickSample(generatePunnet(mum.genotype.white, dad.genotype.white))
+    child.genotype.furLength = pickSample(generatePunnet(mum.genotype.furLength, dad.genotype.furLength))
+
+    // Male only carries one allele for orange
+    if(child.sex == 'M'){
+        child.genotype.orange = [child.genotype.orange[0]]
+    }
+
+    child.phenotype = generatePhenotype(child)
+
+    child.bio = stringifyCat(child)
+
+    return child
+}
+
+function generatePhenotype({genotype, sex}){
+    const { primaryColor, orange, dilute, tabby, white, furLength } = genotype
     let phenotype = {}
 
     // Tabby
@@ -98,38 +133,6 @@ function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLengt
     phenotype.shortFur = isEqual(furLength,['l','l']) ? false : true
 
     return phenotype
-}
-
-/*
-    params: mum and dad cat objects
-    returns: one cat
-*/
-function generateCat(mum, dad){
-    let child = {}
-
-    child.name = names[Math.floor(Math.random()*names.length)]
-    
-    // pick sex of child
-    let rand = Math.floor(Math.random()*2)
-    child.sex = rand == 0 ?'M':'F'
-
-    child.primaryColor = pickSample(generatePunnet(mum.primaryColor, dad.primaryColor))
-    child.orange = pickSample(generatePunnet(mum.orange, dad.orange))
-    child.dilute = pickSample(generatePunnet(mum.dilute, dad.dilute))
-    child.tabby = pickSample(generatePunnet(mum.tabby, dad.tabby))
-    child.white = pickSample(generatePunnet(mum.white, dad.white))
-    child.furLength = pickSample(generatePunnet(mum.furLength, dad.furLength))
-
-    // Male only carries one allele for orange
-    if(child.sex == 'M'){
-        child.orange = [child.orange[0]]
-    }
-
-    child.phenotype = generatePhenotype(child)
-
-    child.bio = stringifyCat(child)
-
-    return child
 }
 
 

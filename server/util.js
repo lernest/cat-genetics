@@ -22,12 +22,11 @@ function stringifyCat({name, sex, phenotype}){
     }
 
     let phenotypeStr = `${name} is a ${phenotype.shortFur?'short-haired':'long-haired'} ${color}${phenotype.tuxedo?' tuxedo':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}!`
-    let bioStr = writeBio(name,sex)
     
-    return `${phenotypeStr} ${bioStr}`
+    return `${phenotypeStr} ${writeBio(sex)}`
 }
 
-function writeBio(name, sex){
+function writeBio(sex){
     return `${preActivity(sex)} ${activities[Math.floor(Math.random()*activities.length)]}.`
 }
 

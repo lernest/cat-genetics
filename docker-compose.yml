@@ -2,14 +2,14 @@
 version: "3.8"
 services:
   ui:
-    build: ./genes-ui
+    build: ./ui
     ports:
       - 8080:8080
     volumes:
-      - ./genes-ui:/app
+      - ./ui:/app/
   api:
-    build: ./genes-server
+    build: ./server
     ports:
       - 3000:3000
     volumes:
-      - ./genes-server:/app
+      - ./server:/app/
