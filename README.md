@@ -27,7 +27,7 @@ A cat can be represted as follows:
 
 ```
 
-When two cats are breeded, a punnet square can be generated for each trait.
+When a kitten is created, a punnet square can be generated for each trait.
 ```
    Punnet Square
 
@@ -44,6 +44,14 @@ This punnet square shows that the offspring can have any of the following genoty
 ['XX','Xx','Xx','xx']
 ```
 
+The phenotype is determined by the combination of these genes.
+
+A few notes on cat genetics that were taken into account for this abstraction:
+```
+    1. Males only have one allele for the 'orange' trait.
+    2. Only females can be tortie / calico. This occurs when their orange gene is heterozygous [O,o]
+    3. Orange cats will present as tabby even if they don't carry the tabby gene.
+```
 
 
 ## Run project using docker compose
