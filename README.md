@@ -49,6 +49,11 @@ A few notes on cat genetics that were taken into account for this abstraction:
 3. Orange cats will present as tabby even if they don't carry the tabby gene.
 
 ------
+If running locally, make sure you're using node v16.
+```
+nvm install v16
+nvm use v16
+```
 
 ## Run project using docker compose
 There is currently a bug which requires `npm i` to be run in each directory before docker-compose will work.
@@ -105,3 +110,16 @@ Most of the logic is within `genes.js`. This is where we generate cats by creati
 
 ### ui/
 The entirity of the frontend is currently in `App.vue`, although this will be separated into components as the app grows.
+
+-----
+## Useful docker help
+
+Remove containers
+```
+docker rm $(docker ps -aq) --force
+```
+
+Remove all dangling images
+```
+docker rmi $(docker images --filter "dangling=true" -q)
+```
