@@ -25,9 +25,9 @@ A cat can be represted as follows:
     }
 ```
 
-When a new kitten is created, a punnet square can be generated for each trait from their parents.
+When a new kitten is created, a punnett square can be generated for each trait from their parents.
 ```
-   Punnet Square
+   Punnett Square
 
          X      x
       |--------------
@@ -37,7 +37,7 @@ When a new kitten is created, a punnet square can be generated for each trait fr
       |--------------
 ```
 
-This punnet square shows that the offspring can have any of the following genotypes for the given trait, each with a probability of 0.25:
+This punnett square shows that the offspring can have any of the following genotypes for the given trait, each with a probability of 0.25:
 ```
 ['XX','Xx','Xx','xx']
 ```
@@ -53,7 +53,7 @@ A few notes on cat genetics that were taken into account for this abstraction:
 ## File structure
 
 ### server/
-Most of the logic is within `genes.js`. This is where we generate cats by creating punnet squares and picking samples. The API endpoints are defined using Express.js in `server.js`. A few utility functions are defined in `util.js` to keep the logic more concise in the main functions. `names.js` and `activities.js` each contain a single array of strings which are used to randomly assign names and favorite acitivities to the kittens. `index.js` is used for development and testing purposes.
+Most of the logic is within `genes.js`. This is where we generate cats by creating punnett squares and picking samples. The API endpoints are defined using Express.js in `server.js`. A few utility functions are defined in `util.js` to keep the logic more concise in the main functions. `names.js` and `activities.js` each contain a single array of strings which are used to randomly assign names and favorite acitivities to the kittens. `index.js` is used for development and testing purposes.
 
 ### ui/
 The entirity of the frontend is currently in `App.vue`, although this will be separated into components as the app grows.

@@ -31,9 +31,9 @@ function writeBio(sex){
 }
 
 /*
-    params: a punnet square
+    params: a punnett square
 */
-function printPunnet({left, right, squares}){    
+function printPunnett({left, right, squares}){    
     let strBuffer = '************************************\n'
     strBuffer += `          ${right[0]}          ${right[1]}\n`
     strBuffer += `    -------------------------\n`
@@ -47,4 +47,4 @@ function printPunnet({left, right, squares}){
     console.log(strBuffer)
 }
 
-module.exports = {printPunnet, isEqual, stringifyCat, writeBio}
+module.exports = {printPunnett, isEqual, stringifyCat, writeBio}

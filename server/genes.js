@@ -3,7 +3,7 @@
     [X,X], [X,x], [x,x]
 
     
-    Punnet Square
+    Punnett Square
 
          X      x
       |--------------
@@ -44,7 +44,7 @@
 */
 
 const names = require('./names.js')
-const { printPunnet, isEqual, stringifyCat } = require('./util.js')
+const { printPunnett, isEqual, stringifyCat } = require('./util.js')
 
 /*
     params: mum and dad cat objects
@@ -59,12 +59,12 @@ function generateCat(mum, dad){
     let rand = Math.floor(Math.random()*2)
     child.sex = rand == 0 ?'M':'F'
 
-    child.genotype.primaryColor = pickSample(generatePunnet(mum.genotype.primaryColor, dad.genotype.primaryColor))
-    child.genotype.orange = pickSample(generatePunnet(mum.genotype.orange, dad.genotype.orange))
-    child.genotype.dilute = pickSample(generatePunnet(mum.genotype.dilute, dad.genotype.dilute))
-    child.genotype.tabby = pickSample(generatePunnet(mum.genotype.tabby, dad.genotype.tabby))
-    child.genotype.white = pickSample(generatePunnet(mum.genotype.white, dad.genotype.white))
-    child.genotype.furLength = pickSample(generatePunnet(mum.genotype.furLength, dad.genotype.furLength))
+    child.genotype.primaryColor = pickSample(generatePunnett(mum.genotype.primaryColor, dad.genotype.primaryColor))
+    child.genotype.orange = pickSample(generatePunnett(mum.genotype.orange, dad.genotype.orange))
+    child.genotype.dilute = pickSample(generatePunnett(mum.genotype.dilute, dad.genotype.dilute))
+    child.genotype.tabby = pickSample(generatePunnett(mum.genotype.tabby, dad.genotype.tabby))
+    child.genotype.white = pickSample(generatePunnett(mum.genotype.white, dad.genotype.white))
+    child.genotype.furLength = pickSample(generatePunnett(mum.genotype.furLength, dad.genotype.furLength))
 
     // Male only carries one allele for orange
     if(child.sex == 'M'){
@@ -150,31 +150,31 @@ function generateLitter(mum, dad, num){
 
 /*  
     params: pairOne [X,x], pairTwo [X,x]
-    returns: punnetSquare {
+    returns: punnettSquare {
                 left: PairOne,
                 right: PairTwo,
                 squares: [[X,X],[X,x],[X,x],[x,x]]
             }
 */
-function generatePunnet(pairOne, pairTwo){
-    let punnetSquare = {}
+function generatePunnett(pairOne, pairTwo){
+    let punnettSquare = {}
 
     // Save left and right parents
-    punnetSquare.left = pairOne
-    punnetSquare.right = pairTwo
+    punnettSquare.left = pairOne
+    punnettSquare.right = pairTwo
 
     // Generate square
-    punnetSquare.squares = []
+    punnettSquare.squares = []
     pairOne.forEach(x => {
         // Pair each element with every other element. Sort to keep uppercase first
-        pairTwo.forEach(y =>punnetSquare.squares.push([x,y].sort()))
+        pairTwo.forEach(y =>punnettSquare.squares.push([x,y].sort()))
     })
 
-    return punnetSquare
+    return punnettSquare
 }
 
 /*
-    params: a punnet square, but we only need squares[]
+    params: a punnett square, but we only need squares[]
     returns: a pair [X,x]
 */
 function pickSample({squares}){
