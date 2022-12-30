@@ -1,7 +1,7 @@
 // this file is only used for manual testing
 
 const { generateCat, generateLitter } = require('./genes.js')
-const { stringifyCat } = require('./util.js')
+const { stringifyCat, writeBio } = require('./util.js')
 
 
 const mum = {
@@ -24,7 +24,7 @@ const dad = {
     sex: 'M'
 }
 
-// let kittens = generateLitter(mum,dad,20)
+let kittens = generateLitter(mum,dad,20)
 // console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
-// kittens.forEach((x,i) => console.log(`${i+1}. ${stringifyCat(x)}`))
+kittens.forEach((x,i) => console.log(`${i+1}. ${stringifyCat(x)}`))
 

@@ -73,9 +73,9 @@ function generatePhenotype({primaryColor, orange, dilute, tabby, white, furLengt
                 phenotype.tortie = Math.floor(Math.random()*4)
             }
         }
-        if(primaryColor.includes('B')){phenotype.color = 'orange black'}
-        else if(primaryColor.includes('b')){phenotype.color = 'orange chocolate'}
-        else{phenotype.color = 'orange cinnamon'}
+        if(primaryColor.includes('B')){phenotype.color = 'orange and black'}
+        else if(primaryColor.includes('b')){phenotype.color = 'orange and chocolate'}
+        else{phenotype.color = 'orange and cinnamon'}
     }
 
     // White / Tuxedo / Black

@@ -1,10 +1,34 @@
+const { activities, preActivity } = require('./activities')
+
 // helper function to check array equality
 function isEqual(a, b){
     return JSON.stringify(a) === JSON.stringify(b);
 }
 
 function stringifyCat({name, sex, phenotype}){
-    return `${name} is a ${phenotype.shortFur?'short-haired':'long-haired'} ${phenotype.dilute?'dilute ':''}${phenotype.color}${phenotype.tuxedo?' tuxedo':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}!`
+    let color = ''
+    // dilute black is gray
+    if(phenotype.dilute && phenotype.color == 'black'){
+        color = 'gray'
+    }
+    else if(phenotype.dilute && phenotype.color == 'white'){
+        color = 'white'
+    }
+    else if(phenotype.dilute){
+        color = 'dilute '+phenotype.color
+    }
+    else{
+        color = phenotype.color
+    }
+
+    let phenotypeStr = `${name} is a ${phenotype.shortFur?'short-haired':'long-haired'} ${color}${phenotype.tuxedo?' tuxedo':''}${phenotype.tabby?' tabby':''} ${sex=='F'?'girl':'boy'}!`
+    let bioStr = writeBio(name,sex)
+    
+    return `${phenotypeStr} ${bioStr}`
+}
+
+function writeBio(name, sex){
+    return `${preActivity(sex)} ${activities[Math.floor(Math.random()*activities.length)]}.`
 }
 
 /*
@@ -24,4 +48,4 @@ function printPunnet({left, right, squares}){
     console.log(strBuffer)
 }
 
-module.exports = {printPunnet, isEqual, stringifyCat}
+module.exports = {printPunnet, isEqual, stringifyCat, writeBio}
