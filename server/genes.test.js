@@ -65,7 +65,6 @@ describe("generateCat",()=>{
     })
 })
 
-
 describe("generatePunnet",()=>{
     test('AA x AA', () => {
         expect(generatePunnett(['A','A'],['A','A']).squares.join('')).toBe([['A','A'],['A','A'],['A','A'],['A','A']].join(''));
