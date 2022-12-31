@@ -76,7 +76,7 @@ describe("generatePunnet",()=>{
         expect(generatePunnett(['A','a'],['A','a']).squares.join('')).toBe([['A','A'],['A','a'],['A','a'],['a','a']].join(''));
       });
     test('AA x Aa', () => {
-        expect(generatePunnett(['A','A'],['A','a']).squares.join('')).toBe([['A','A'],['A','a'],['A','A'],['A','a']].join(''));
+        expect(generatePunnett(['A','A'],['A','a']).squares.join('')).toBe([['a','A'],['A','a'],['A','A'],['A','a']].join(''));
       });
 })
 
