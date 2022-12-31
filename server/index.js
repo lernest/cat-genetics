@@ -30,10 +30,10 @@ const dad = {
     }
 }
 
-let kitten = generateCat(mum,dad)
-console.log(kitten)
+// let kitten = generateCat(mum,dad)
+// console.log(kitten)
 
-// let kittens = generateLitter(mum,dad,20)
-// console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
-// kittens.forEach((x,i) => console.log(`${i+1}. ${x.bio}`))
+let kittens = generateLitter(mum,dad,20)
+console.log(`Proud Mama has given birth to a litter of ${kittens.length} kittens!`)
+kittens.forEach((x,i) => console.log(`${i+1}. ${x.bio}`))
 

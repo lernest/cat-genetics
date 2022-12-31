@@ -184,4 +184,4 @@ function pickSample({squares}){
     return squares[randomNum]
 }
 
-module.exports = {generateCat, generateLitter}
+module.exports = {generateCat, generateLitter, generatePunnett, generatePhenotype}
