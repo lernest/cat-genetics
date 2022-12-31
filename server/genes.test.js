@@ -1,4 +1,4 @@
-const { generateCat, generateLitter, generatePunnett, generatePhenotype } = require('./genes.js')
+const { generateLitter, generatePunnett, generatePhenotype } = require('./genes.js')
 
 
 describe("generateCat",()=>{
